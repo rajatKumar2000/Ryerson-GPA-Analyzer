@@ -1,0 +1,102 @@
+COE 318
+Software Systems
+Fall 2019
+C+
+1.00
+TakenTaken
+COE 328
+Digital Systems
+Fall 2019
+B+
+1.00
+TakenTaken
+ELE 302
+Electric Networks
+Fall 2019
+B-
+1.00
+TakenTaken
+MTH 312
+Diff Equat and Vector Calculus
+Fall 2019
+C+
+1.00
+TakenTaken
+PCS 224
+Solid State Physics
+Fall 2019
+C+
+1.00
+TakenTaken
+CPS 125
+Digital Computation and Prog
+Winter 2019
+B+
+1.00
+TakenTaken
+ECN 801
+Principles of Eng Economics
+Winter 2019
+B+
+1.00
+TakenTaken
+ELE 202
+Electric Circuit Analysis
+Winter 2019
+A-
+1.00
+TakenTaken
+MTH 240
+Calculus II
+Winter 2019
+A-
+1.00
+TakenTaken
+PCS 125
+Physics: Waves and Fields
+Winter 2019
+D+
+1.00
+TakenTaken
+CEN 100
+Introduction to Engineering
+Fall 2018
+C
+1.00
+TakenTaken
+CEN 199
+Writing Skills
+Fall 2018
+PSD
+1.00
+TakenTaken
+CHY 102
+General Chemistry
+Fall 2018
+B
+1.00
+TakenTaken
+MTH 140
+Calculus I
+Fall 2018
+A
+1.00
+TakenTaken
+MTH 141
+Linear Algebra
+Fall 2018
+A+
+1.00
+TakenTaken
+PCS 211
+Physics: Mechanics
+Fall 2018
+A
+1.00
+TakenTaken
+POL 128
+Politics and Film
+Fall 2018
+D-
+1.00
+TakenTaken

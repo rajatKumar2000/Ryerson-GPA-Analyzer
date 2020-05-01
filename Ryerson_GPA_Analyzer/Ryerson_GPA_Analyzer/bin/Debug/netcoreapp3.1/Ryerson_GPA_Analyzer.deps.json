@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Ryerson_GPA_Analyzer/1.0.0": {
+        "runtime": {
+          "Ryerson_GPA_Analyzer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ryerson_GPA_Analyzer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
