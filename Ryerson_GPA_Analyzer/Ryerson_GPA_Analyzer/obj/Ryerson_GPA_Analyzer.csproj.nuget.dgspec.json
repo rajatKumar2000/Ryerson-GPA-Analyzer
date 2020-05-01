@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rajat\\Desktop\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj": {}
+    "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rajat\\Desktop\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj": {
+    "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rajat\\Desktop\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj",
+        "projectUniqueName": "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj",
         "projectName": "Ryerson_GPA_Analyzer",
-        "projectPath": "C:\\Users\\rajat\\Desktop\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj",
+        "projectPath": "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj",
         "packagesPath": "C:\\Users\\rajat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rajat\\Desktop\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\obj\\",
+        "outputPath": "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rajat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
