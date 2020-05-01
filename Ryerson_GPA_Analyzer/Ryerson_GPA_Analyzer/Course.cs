@@ -22,10 +22,10 @@ namespace Ryerson_GPA_Analyzer
             Grade = grade;
             Weight = weight;
 
-            SetGPA();
+            setGPA();
         }
 
-        private void SetGPA() 
+        private void setGPA() 
         {
             String[] letterGrades = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F" };
             double[] gradeValues = {4.33, 4, 3.67, 3.33, 3, 2.67, 2.33, 2, 1.67, 1.33, 1, 0.67, 0};

@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace Ryerson_GPA_Analyzer
 {
@@ -23,35 +25,33 @@ namespace Ryerson_GPA_Analyzer
     {
         private List<Course> allCourses = new List<Course>();
         private List<Semester> allSemesters = new List<Semester>();
+        private ChartManager chartManager;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            ReadCoursesFile();
+            chartManager = new ChartManager();
+
+            readCoursesFile();
+            allSemesters.Reverse(); //So allSemesters[0] is first sem, instead of your last sem
             setCGPA();
             dgGrades.ItemsSource = allSemesters;
-
-            String temp = "";
-            foreach (Semester item in allSemesters)
-            {
-                temp += item.SemesterName + " " + item.CGPA + " \n";
-            }
-
-            lblTemp.Content = temp;
+            dgGrades.SelectedIndex = 0;
+            chartManager.createLineGraph(allSemesters, lvcGraph); //Creates the visual graph
         }
 
         /// <summary>
         ///  Reads the courses.txt file, and parses the data, creating all the required Courses and Semester objects 
         /// </summary>
-        private void ReadCoursesFile() 
+        private void readCoursesFile() 
         {
             StreamReader file = new StreamReader("courses.txt");
             String line;
             int count = 0;
             int semesterCount = 0;
             String oldSemester = "";
-
+            
             String courseCode = "";
             String courseName = "";
             String semester = "";
@@ -100,16 +100,16 @@ namespace Ryerson_GPA_Analyzer
         }
 
         /// <summary>
-        /// Sets the CGPA for all Semesters
+        /// Calculates and sets the CGPA for all Semesters
         /// </summary>
         private void setCGPA() 
         {
             double totalGradePoints = 0;
             double totalWeights = 0;
 
-            for (int i = allSemesters.Count; i > 0; i--) //For loop counts down, cause latest semester appears first in list
+            for (int i = 0; i < allSemesters.Count; i++) //For loop counts down, cause latest semester appears first in list
             {
-                foreach (Course course in allSemesters[i-1].SemesterCourses)
+                foreach (Course course in allSemesters[i].SemesterCourses)
                 {
                     if (course.GPA != -1) //-1 means the grade is not from A+ to F. (Ex. PSD)
                     {
@@ -118,7 +118,60 @@ namespace Ryerson_GPA_Analyzer
                     }
                 }
 
-                allSemesters[i-1].CGPA = Math.Round(totalGradePoints / totalWeights, 2);
+                allSemesters[i].CGPA = Math.Round(totalGradePoints / totalWeights, 2);
+            }
+        }
+
+        private void dgGrades_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            Semester selectedSemester = (Semester) dgGrades.SelectedItem;
+            displaySemesterInfo(selectedSemester);
+        }
+
+        /// <summary>
+        /// Displays a single Semester's courses. Specifically it shows the course code, the letter grade achieved, and the grades credit value
+        /// </summary>
+        private void displaySemesterInfo(Semester selectedSemester) 
+        {
+            stkCourseInfoArea.Children.Clear();
+
+            foreach (Course course in selectedSemester.SemesterCourses)
+            {
+                StackPanel coursePanel = new StackPanel();
+                Label lblCourseCode = new Label();
+                Label lblCourseGrade = new Label();
+                Label lblCourseGPA = new Label();
+
+                lblCourseCode.Content = course.CourseCode;
+                lblCourseGrade.Content = course.Grade;
+
+                lblCourseCode.FontWeight = FontWeights.Bold;
+                lblCourseGrade.Foreground = new SolidColorBrush(Colors.Green);
+
+                if (course.Grade.StartsWith("A"))
+                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkGreen);
+                else if (course.Grade.StartsWith("B"))
+                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DeepSkyBlue);
+                else if (course.Grade.StartsWith("C"))
+                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkOrange);
+                else if (course.Grade.StartsWith("D"))
+                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkRed);
+                else
+                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.Black);
+
+                //(Color)ColorConverter.ConvertFromString("")
+                if (course.GPA != -1)
+                    lblCourseGPA.Content = course.GPA;
+                else
+                    lblCourseGPA.Content = "N/A";
+
+                coursePanel.Children.Add(lblCourseCode);
+                coursePanel.Children.Add(lblCourseGrade);
+                coursePanel.Children.Add(lblCourseGPA);
+
+                coursePanel.Margin = new Thickness(5);
+
+                stkCourseInfoArea.Children.Add(coursePanel);
             }
         }
     }
