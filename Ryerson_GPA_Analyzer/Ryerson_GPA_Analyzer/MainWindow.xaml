@@ -32,7 +32,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True" Grid.Column="2" Grid.Row="0">
             <Border  CornerRadius="7" Margin="3" BorderBrush="Black" BorderThickness="2">
                 <StackPanel Name= "stkTableArea">
-                    <DataGrid Name="dgGrades" AutoGenerateColumns="False" IsReadOnly="True" Margin="3,6,4,3" SelectedCellsChanged="dgGrades_SelectedCellsChanged">
+                    <DataGrid Name="dgGrades" AutoGenerateColumns="False" IsReadOnly="True" Margin="4,6,4,4" SelectedCellsChanged="dgGrades_SelectedCellsChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Semester" Binding="{Binding SemesterName}" Width="*" />
                             <DataGridTextColumn Header="TGPA" Binding="{Binding TGPA}" Width="*" />

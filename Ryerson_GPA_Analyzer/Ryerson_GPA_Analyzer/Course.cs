@@ -6,9 +6,9 @@ namespace Ryerson_GPA_Analyzer
 {
     class Course
     {
-        public String CourseCode { get; private set; }
+        public String CourseCode { get; set; }
         public String CourseName { get; private set; }
-        public String Semester { get; private set; }
+        public String Semester { get; set; }
         public String Grade { get; private set; }
         public double Weight { get; private set; }
 
