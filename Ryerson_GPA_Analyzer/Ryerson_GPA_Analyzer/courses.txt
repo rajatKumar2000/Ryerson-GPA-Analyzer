@@ -25,7 +25,7 @@ TakenTaken
 PCS 224
 Solid State Physics
 Fall 2019
-F+
+F
 1.00
 TakenTaken
 CPS 125

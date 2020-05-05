@@ -8,11 +8,17 @@ namespace Ryerson_GPA_Analyzer
 {
     class ChartManager
     {
+        
         public void createLineGraph(List<Semester> allSemesters, LiveCharts.Wpf.CartesianChart graph) 
         {
             List<double> tgpaPoints = new List<double>();
             List<double> cgpaPoints = new List<double>();
             List<string> semDates = new List<string>();
+
+            foreach (Semester sem in allSemesters)
+            {
+               
+            }
 
             foreach (Semester sem in allSemesters)
             {
@@ -28,7 +34,7 @@ namespace Ryerson_GPA_Analyzer
                     Title = "TGPA",
                     Values = new ChartValues<double>(tgpaPoints)
                 },
-                new LineSeries 
+                new LineSeries
                 {
                     Title = "CGPA",
                     Values = new ChartValues<double>(cgpaPoints)
@@ -43,8 +49,6 @@ namespace Ryerson_GPA_Analyzer
             graph.AxisX.Add(new Axis { Title = "Semesters", Labels = semDates, });
             graph.AxisY.Add(new Axis { Title = "GPA", LabelFormatter = y_axis});
 
-
-            
         }
     }
 }

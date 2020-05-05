@@ -58,7 +58,7 @@ namespace Ryerson_GPA_Analyzer
             String grade = "";
             double weight = 0;
 
-            while ((line = file.ReadLine()) != null)
+            while ((line = file.ReadLine()) != null) //Fills out the relevant information from the courses.txt file
             {
                 if (count == 0)
                     courseCode = line;
@@ -70,12 +70,9 @@ namespace Ryerson_GPA_Analyzer
                     grade = line;
                 else if (count == 4)
                     weight = Double.Parse(line);
-                else if (count == 5) 
+                else if (count == 5) //6th line of file is garbage ("TakenTaken"), so we use this spot to create any Semester/Course objects
                 {
-                    Course newCourse = new Course(courseCode, courseName, semester, grade, weight);
-                    allCourses.Add(newCourse);
-
-                    if (!oldSemester.Equals(semester))
+                    if (!oldSemester.Equals(semester)) //if true, creates a new Semester
                     {
                         if (semesterCount > 0)
                         {
@@ -83,12 +80,14 @@ namespace Ryerson_GPA_Analyzer
                         }
 
                         allSemesters.Add(new Semester(semester));
-                        allSemesters[semesterCount].addCourse(newCourse);
                         oldSemester = semester;
                         semesterCount++;
                     }
-                    else
-                        allSemesters[semesterCount - 1].addCourse(newCourse);
+
+                    //Creates new Course, and links the relevant Course and Semester objects
+                    Course newCourse = new Course(courseCode, courseName, allSemesters[semesterCount - 1], grade, weight);
+                    allSemesters[semesterCount - 1].addCourse(newCourse);
+                    allCourses.Add(newCourse);
 
                     count = -1;
                 }
@@ -107,7 +106,7 @@ namespace Ryerson_GPA_Analyzer
             double totalGradePoints = 0;
             double totalWeights = 0;
 
-            for (int i = 0; i < allSemesters.Count; i++) //For loop counts down, cause latest semester appears first in list
+            for (int i = 0; i < allSemesters.Count; i++) 
             {
                 foreach (Course course in allSemesters[i].SemesterCourses)
                 {
@@ -122,6 +121,11 @@ namespace Ryerson_GPA_Analyzer
             }
         }
 
+        /// <summary>
+        /// Event occurs when user clicks a new Semester cell from datagrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgGrades_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             Semester selectedSemester = (Semester) dgGrades.SelectedItem;
@@ -129,50 +133,105 @@ namespace Ryerson_GPA_Analyzer
         }
 
         /// <summary>
-        /// Displays a single Semester's courses. Specifically it shows the course code, the letter grade achieved, and the grades credit value
+        /// Displays a single Semester's courses. Specifically it shows the course code,
+        /// the letter grade achieved, and the grades credit value
         /// </summary>
         private void displaySemesterInfo(Semester selectedSemester) 
         {
             stkCourseInfoArea.Children.Clear();
+            String[] letterGrades = { "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "PSD", "CR", "NCR" };
 
             foreach (Course course in selectedSemester.SemesterCourses)
             {
+                //Course information is displayed with the following elements
                 StackPanel coursePanel = new StackPanel();
+                ComboBox cboCourseGrade = new ComboBox();
                 Label lblCourseCode = new Label();
-                Label lblCourseGrade = new Label();
                 Label lblCourseGPA = new Label();
 
-                lblCourseCode.Content = course.CourseCode;
-                lblCourseGrade.Content = course.Grade;
-
-                lblCourseCode.FontWeight = FontWeights.Bold;
-                lblCourseGrade.Foreground = new SolidColorBrush(Colors.Green);
-
-                if (course.Grade.StartsWith("A"))
-                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkGreen);
-                else if (course.Grade.StartsWith("B"))
-                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DeepSkyBlue);
-                else if (course.Grade.StartsWith("C"))
-                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkOrange);
-                else if (course.Grade.StartsWith("D"))
-                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.DarkRed);
-                else
-                    lblCourseGrade.Foreground = new SolidColorBrush(Colors.Black);
-
-                //(Color)ColorConverter.ConvertFromString("")
-                if (course.GPA != -1)
-                    lblCourseGPA.Content = course.GPA;
-                else
-                    lblCourseGPA.Content = "N/A";
-
+                //Set the children for the Stackpanel
                 coursePanel.Children.Add(lblCourseCode);
-                coursePanel.Children.Add(lblCourseGrade);
+                coursePanel.Children.Add(cboCourseGrade);
                 coursePanel.Children.Add(lblCourseGPA);
 
-                coursePanel.Margin = new Thickness(5);
+                //Set any useful tags
+                cboCourseGrade.Tag = coursePanel;
+                coursePanel.Tag = course;
 
-                stkCourseInfoArea.Children.Add(coursePanel);
+                //Set properties for label displaying a course's GPA
+                lblCourseGPA.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblCourseGPA.HorizontalAlignment = HorizontalAlignment.Center;
+                lblCourseGPA.VerticalAlignment = VerticalAlignment.Bottom;
+                lblCourseGPA.FontWeight = FontWeights.Bold;
+                lblCourseGPA.Margin = new Thickness(3);
+
+                //Set properties for label displaying a course's credit
+                lblCourseCode.HorizontalContentAlignment = HorizontalAlignment.Center;
+                lblCourseCode.HorizontalAlignment = HorizontalAlignment.Center;
+                lblCourseCode.VerticalAlignment = VerticalAlignment.Top;
+                lblCourseCode.Content = course.CourseCode;
+                lblCourseCode.FontWeight = FontWeights.Bold;
+                lblCourseCode.Margin = new Thickness(3);
+
+                //Set properties for combobox that allows user to select a course's grade
+                cboCourseGrade.SelectionChanged += cboCourseGrade_SelectionChanged;
+                cboCourseGrade.HorizontalAlignment = HorizontalAlignment.Center;
+                cboCourseGrade.VerticalAlignment = VerticalAlignment.Center;
+                cboCourseGrade.ItemsSource = letterGrades;
+                cboCourseGrade.SelectedItem = course.Grade;
+                cboCourseGrade.Margin = new Thickness(3);
+               
+                //Set properties of the border of the StackPanel
+                Border courseBorder = new Border();
+                courseBorder.CornerRadius = new CornerRadius(4);
+                courseBorder.Margin = new Thickness(5);
+                courseBorder.BorderBrush = new SolidColorBrush(Colors.Black);
+                courseBorder.BorderThickness = new Thickness(1);
+                courseBorder.Child = coursePanel;
+
+                //Adds the border (and hence all its children), to the course info area
+                stkCourseInfoArea.Children.Add(courseBorder);
             }
+        }
+
+        /// <summary>
+        /// Event occurs when user changes the selection of a course's grade from the course info area
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboCourseGrade_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Gets relevant information from sender and tags
+            ComboBox cboThis = (ComboBox)sender;
+            StackPanel coursePanel = (StackPanel)cboThis.Tag;
+            Course course = (Course)coursePanel.Tag;
+
+            //Change's grade and gpa of course
+            course.Grade = (string)cboThis.SelectedValue;
+            course.setGPA();
+
+            Label lblCourseGPA = (Label)coursePanel.Children[2];
+
+            //Set's content (text) for label displaying the course's GPA
+            if (course.GPA != -1)
+                lblCourseGPA.Content = course.GPA;
+            else
+                lblCourseGPA.Content = "N/A";
+
+            //Set's the color of the StackPanel in accordance to the grade value of the associated course
+            if (course.Grade.StartsWith("A"))
+                coursePanel.Background = new SolidColorBrush(Colors.LightGreen);
+            else if (course.Grade.StartsWith("B"))
+                coursePanel.Background = new SolidColorBrush(Colors.LightSteelBlue);
+            else if (course.Grade.StartsWith("C"))
+                coursePanel.Background = new SolidColorBrush(Colors.LightPink);
+            else if (course.Grade.StartsWith("D"))
+                coursePanel.Background = new SolidColorBrush(Colors.LightSalmon);
+
+            course.Semester.updateTGPA();
+            setCGPA();
+            dgGrades.Items.Refresh();
+           // chartManager.createLineGraph(allSemesters, lvcGraph);
         }
     }
 }
