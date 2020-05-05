@@ -174,13 +174,13 @@ namespace Ryerson_GPA_Analyzer
                 lblCourseCode.Margin = new Thickness(3);
 
                 //Set properties for combobox that allows user to select a course's grade
-                cboCourseGrade.SelectionChanged += cboCourseGrade_SelectionChanged;
                 cboCourseGrade.HorizontalAlignment = HorizontalAlignment.Center;
                 cboCourseGrade.VerticalAlignment = VerticalAlignment.Center;
                 cboCourseGrade.ItemsSource = letterGrades;
                 cboCourseGrade.SelectedItem = course.Grade;
                 cboCourseGrade.Margin = new Thickness(3);
-               
+                cboCourseGrade.SelectionChanged += cboCourseGrade_SelectionChanged;
+
                 //Set properties of the border of the StackPanel
                 Border courseBorder = new Border();
                 courseBorder.CornerRadius = new CornerRadius(4);
@@ -188,6 +188,8 @@ namespace Ryerson_GPA_Analyzer
                 courseBorder.BorderBrush = new SolidColorBrush(Colors.Black);
                 courseBorder.BorderThickness = new Thickness(1);
                 courseBorder.Child = coursePanel;
+
+                setDynamicCoursePanelInfo(course, lblCourseGPA, coursePanel);
 
                 //Adds the border (and hence all its children), to the course info area
                 stkCourseInfoArea.Children.Add(courseBorder);
@@ -211,7 +213,16 @@ namespace Ryerson_GPA_Analyzer
             course.setGPA();
 
             Label lblCourseGPA = (Label)coursePanel.Children[2];
+            setDynamicCoursePanelInfo(course, lblCourseGPA, coursePanel);
+            
+            course.Semester.updateTGPA();
+            setCGPA();
+            dgGrades.Items.Refresh();
+            chartManager.updateGraphSeries(allSemesters);
+        }
 
+        private void setDynamicCoursePanelInfo(Course course, Label lblCourseGPA, StackPanel coursePanel) 
+        {
             //Set's content (text) for label displaying the course's GPA
             if (course.GPA != -1)
                 lblCourseGPA.Content = course.GPA;
@@ -227,11 +238,6 @@ namespace Ryerson_GPA_Analyzer
                 coursePanel.Background = new SolidColorBrush(Colors.LightPink);
             else if (course.Grade.StartsWith("D"))
                 coursePanel.Background = new SolidColorBrush(Colors.LightSalmon);
-
-            course.Semester.updateTGPA();
-            setCGPA();
-            dgGrades.Items.Refresh();
-           // chartManager.createLineGraph(allSemesters, lvcGraph);
         }
     }
 }
