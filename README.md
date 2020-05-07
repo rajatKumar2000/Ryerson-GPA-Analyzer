@@ -15,7 +15,7 @@ Features:
 </p>
 
 ## Setting it up:
-The only thing that needs to be setup is the <b>course.txt</b> file.
+The only thing that needs to be setup is the <b>courses.txt</b> file.
 <br>
 To get the required information, you must go to: <b>RAMSS -> Academics -> View My Course History</b>
 <br>
@@ -26,7 +26,7 @@ In this page, click the Filter button, and uncheck the "In Progress" checkbox
 <img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Ryerson-GPA-Analyzer/blob/master/Media/GPA_Filter.PNG" width="800"/>
 </p>
 <br>
-Now, you just simply copy the information on the table to the course.txt file
+Now, you just simply copy the information on the table to the courses.txt file
 <br>
 <br>
 <p align="center" style="vertical-align: top; position: relative" >
@@ -47,5 +47,4 @@ Fall 2019<br>
 B<br>
 1.00<br>
 TakenTaken<br>
-...
 </p>
