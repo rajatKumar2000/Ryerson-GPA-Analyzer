@@ -32,7 +32,7 @@ namespace Ryerson_GPA_Analyzer
 
             int indexVal = Array.IndexOf(letterGrades, Grade);
 
-            if (indexVal == -1) //So things like PSD don't affect GPA
+            if (indexVal == -1) //So things like PSD/CR/NCR don't affect GPA
                 GPA = -1;
             else
                 GPA = gradeValues[indexVal];

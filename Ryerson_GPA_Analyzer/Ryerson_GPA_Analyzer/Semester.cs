@@ -18,15 +18,6 @@ namespace Ryerson_GPA_Analyzer
         }
 
         /// <summary>
-        ///  Add's a Course object to this Semester object
-        /// </summary>
-        /// <param name="newCourse"></param>
-        public void addCourse(Course newCourse) 
-        {
-            SemesterCourses.Add(newCourse);
-        }
-
-        /// <summary>
         /// Updates the TGPA (Term Grade Point Average)
         /// </summary>
         public void updateTGPA() 

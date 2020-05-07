@@ -13,7 +13,7 @@ TakenTaken
 ELE 302
 Electric Networks
 Fall 2019
-C-
+S
 1.00
 TakenTaken
 MTH 312

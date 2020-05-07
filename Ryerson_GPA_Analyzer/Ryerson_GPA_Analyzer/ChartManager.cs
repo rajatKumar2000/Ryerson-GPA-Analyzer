@@ -13,10 +13,10 @@ namespace Ryerson_GPA_Analyzer
         private LineSeries cgpaLine;
         private List<ObservableValue> tgpaPoints;
         private List<ObservableValue> cgpaPoints;
-
+        private List<string> semDates;
         public void createLineGraph(List<Semester> allSemesters, LiveCharts.Wpf.CartesianChart graph) 
         {
-            List<string> semDates = new List<string>();
+            semDates = new List<string>();
 
             //initializing important graph values
             tgpaPoints = new List<ObservableValue>();
@@ -24,14 +24,13 @@ namespace Ryerson_GPA_Analyzer
             tgpaLine = new LineSeries {Title = "TGPA", PointGeometry = DefaultGeometries.Square, PointGeometrySize = 8};
             cgpaLine = new LineSeries {Title = "CGPA", PointGeometrySize = 8};
 
+            tgpaLine.Values = new ChartValues<ObservableValue>();
+            cgpaLine.Values = new ChartValues<ObservableValue>();
+
             foreach (Semester sem in allSemesters)
             {
-                semDates.Add(sem.SemesterName);  //probably gonna have to move this its own function, when semesters can be added
-                addObservablePoints(sem.TGPA, sem.CGPA);
+                addObservablePoints(sem.TGPA, sem.CGPA, sem.SemesterName);
             }
-
-            tgpaLine.Values = new ChartValues<ObservableValue>(tgpaPoints);
-            cgpaLine.Values = new ChartValues<ObservableValue>(cgpaPoints);
 
             SeriesCollection series = new SeriesCollection
             {
@@ -56,10 +55,26 @@ namespace Ryerson_GPA_Analyzer
             }
         }
 
-        public void addObservablePoints(double tgpa, double cgpa) 
+        public void addObservablePoints(double tgpa, double cgpa, string semName) 
         {
+            semDates.Add(semName);
+
             tgpaPoints.Add(new ObservableValue(tgpa));
             cgpaPoints.Add(new ObservableValue(cgpa));
+
+            tgpaLine.Values.Add(tgpaPoints[tgpaPoints.Count - 1]);
+            cgpaLine.Values.Add(cgpaPoints[cgpaPoints.Count - 1]);
+        }
+
+        public void removeObservablePoints(int index)
+        {
+            semDates.RemoveAt(index);
+
+            tgpaPoints.RemoveAt(index);
+            cgpaPoints.RemoveAt(index);
+
+            tgpaLine.Values.RemoveAt(index);
+            cgpaLine.Values.RemoveAt(index);
         }
     }
 }
