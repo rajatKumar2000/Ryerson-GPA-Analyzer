@@ -21,18 +21,20 @@ To get the required information, you must go to: <b>RAMSS -> Academics -> View M
 <br>
 In this page, click the Filter button, and uncheck the "In Progress" checkbox
 <br>
+<br>
 <p align="center" style="vertical-align: top; position: relative" >
 <img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Ryerson-GPA-Analyzer/blob/master/Media/GPA_Filter.PNG" width="800"/>
 </p>
 <br>
 Now, you just simply copy the information on the table to the course.txt file
 <br>
+<br>
 <p align="center" style="vertical-align: top; position: relative" >
 <img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Ryerson-GPA-Analyzer/blob/master/Media/Setup.gif" width="600"/>
 </p>
 <br>
 <p>
-Make sure that the content's of course.txt look something like this:<br><br>
+Make sure that the contents of course.txt look something like this:<br><br>
 COE 318<br>
 Software Systems<br>
 Fall 2019<br>
