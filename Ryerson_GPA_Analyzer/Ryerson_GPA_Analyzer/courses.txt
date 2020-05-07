@@ -1,31 +1,31 @@
 COE 318
 Software Systems
 Fall 2019
-A+
+B+
 1.00
 TakenTaken
 COE 328
 Digital Systems
 Fall 2019
-B+
+B
 1.00
 TakenTaken
 ELE 302
 Electric Networks
 Fall 2019
-S
+A-
 1.00
 TakenTaken
 MTH 312
 Diff Equat and Vector Calculus
 Fall 2019
-D+
+C+
 1.00
 TakenTaken
 PCS 224
 Solid State Physics
 Fall 2019
-F
+A+
 1.00
 TakenTaken
 CPS 125
@@ -37,19 +37,19 @@ TakenTaken
 ECN 801
 Principles of Eng Economics
 Winter 2019
-A+
+C
 1.00
 TakenTaken
 ELE 202
 Electric Circuit Analysis
 Winter 2019
-A-
+B-
 1.00
 TakenTaken
 MTH 240
 Calculus II
 Winter 2019
-A-
+D+
 1.00
 TakenTaken
 PCS 125
@@ -73,19 +73,19 @@ TakenTaken
 CHY 102
 General Chemistry
 Fall 2018
-A+
+B+
 1.00
 TakenTaken
 MTH 140
 Calculus I
 Fall 2018
-A+
+C+
 1.00
 TakenTaken
 MTH 141
 Linear Algebra
 Fall 2018
-A+
+B
 1.00
 TakenTaken
 PCS 211
