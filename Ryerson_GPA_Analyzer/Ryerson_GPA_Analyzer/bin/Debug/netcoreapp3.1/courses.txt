@@ -1,20 +1,20 @@
 COE 318
 Software Systems
 Fall 2019
-B+
-1.00
+B+ 
+1.00 
 TakenTaken
 COE 328
 Digital Systems
 Fall 2019
-B
-1.00
+  B
+  1.00       
 TakenTaken
 ELE 302
 Electric Networks
 Fall 2019
 A-
-1.00
+1.00 
 TakenTaken
 MTH 312
 Diff Equat and Vector Calculus

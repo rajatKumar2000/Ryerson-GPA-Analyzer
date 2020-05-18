@@ -73,9 +73,9 @@ namespace Ryerson_GPA_Analyzer
                 else if (count == 2)
                     semester = line;
                 else if (count == 3)
-                    grade = line;
+                    grade = line.Trim();
                 else if (count == 4)
-                    weight = Double.Parse(line);
+                    weight = Double.Parse(line.Trim());
                 else if (count == 5) //6th line of file is garbage ("TakenTaken"), so we use this spot to create any Semester/Course objects
                 {
                     if (!oldSemester.Equals(semester)) //if true, creates a new Semester

@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "dgSpecHash": "Lytla6f6YA9135FDZssktk2vfdqc3we8/eFhuJyXpgMAwtl04EE7W7SH45CpwAL3sAC9Icv8umWsg44z7B+EAA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rajat\\Desktop\\git_Ryerson_GPA\\Ryerson-GPA-Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer\\Ryerson_GPA_Analyzer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rajat\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
+    "C:\\Users\\rajat\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
+    "C:\\Users\\rajat\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\3.1.3\\microsoft.netcore.app.runtime.win-x86.3.1.3.nupkg.sha512",
+    "C:\\Users\\rajat\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\3.1.3\\microsoft.windowsdesktop.app.runtime.win-x86.3.1.3.nupkg.sha512",
+    "C:\\Users\\rajat\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.3\\microsoft.aspnetcore.app.runtime.win-x86.3.1.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LiveCharts 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "LiveCharts",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LiveCharts.Wpf 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "LiveCharts.Wpf",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
