@@ -66,6 +66,11 @@ namespace Ryerson_GPA_Analyzer
 
             while ((line = file.ReadLine()) != null) //Fills out the relevant information from the courses.txt file
             {
+                line = line.Trim();
+
+                if (line == "")
+                    continue;
+
                 if (count == 0)
                     courseCode = line;
                 else if (count == 1)
@@ -73,9 +78,9 @@ namespace Ryerson_GPA_Analyzer
                 else if (count == 2)
                     semester = line;
                 else if (count == 3)
-                    grade = line.Trim();
+                    grade = line;
                 else if (count == 4)
-                    weight = Double.Parse(line.Trim());
+                    weight = Double.Parse(line);
                 else if (count == 5) //6th line of file is garbage ("TakenTaken"), so we use this spot to create any Semester/Course objects
                 {
                     if (!oldSemester.Equals(semester)) //if true, creates a new Semester

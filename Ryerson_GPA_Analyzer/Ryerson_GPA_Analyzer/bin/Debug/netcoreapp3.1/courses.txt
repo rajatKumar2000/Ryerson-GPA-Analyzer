@@ -1,17 +1,22 @@
 COE 318
 Software Systems
 Fall 2019
-B+ 
+B+   
+
 1.00 
 TakenTaken
+
 COE 328
 Digital Systems
+
 Fall 2019
   B
   1.00       
 TakenTaken
 ELE 302
+
 Electric Networks
+
 Fall 2019
 A-
 1.00 
