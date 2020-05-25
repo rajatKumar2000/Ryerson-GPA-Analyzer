@@ -48,3 +48,20 @@ B<br>
 1.00<br>
 TakenTaken<br>
 </p>
+
+<p>
+<br>
+Empty lines between the text is also acceptable:<br><br>
+COE 318<br><br>
+Software Systems<br>
+Fall 2019<br><br>
+B+<br><br>
+1.00<br>
+TakenTaken<br>
+COE 328<br><br>
+Digital Systems<br>
+Fall 2019<br><br>
+B<br>
+1.00<br>
+TakenTaken<br>
+</p>
